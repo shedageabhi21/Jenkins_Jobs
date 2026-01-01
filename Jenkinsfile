@@ -31,6 +31,19 @@ pipeline {
 
             }
         }
+
+        stage('Approval2') {
+            steps {
+                script {
+                    def userInput = input(
+                        message: 'Approve deployment?',
+                        parameters: [
+                            string(name: 'VERSION', defaultValue: '1.0', description: 'Version to deploy'),
+                            booleanParam(name: 'CONFIRM', defaultValue: true, description: 'Confirm deployment?')
+                        ]
+                    )
+                    echo "User entered: ${userInput}"
+        
         stage('Deploy') {
             steps {
                 echo 'Deploing the app'
