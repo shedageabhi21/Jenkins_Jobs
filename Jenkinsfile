@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                 input message: 'Do you want to continue?', ok: 'Yes, deploy'
+                input message: 'Do you want to continue?', ok: 'Yes, deploy'
 
             }
         }
