@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "checking the git intgration"
-date
-hostname
+echo "Build number: $BUILD_NUMBER"
+echo "job name: $JOB_NAME"
 ip r
