@@ -4,31 +4,26 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Code checkout completed'
-
             }
-
         }
 
         stage('Build') {
             steps {
                 echo 'Building application'
                 sh 'ls -l'
-
             }
         }
 
         stage('Approval') {
             steps {
                 input message: 'Do you want to continue?', ok: 'Yes, deploy'
-
             }
         }
 
-        stage('test') {
+        stage('Test') {
             steps {
                 echo 'Running tests'
                 sh 'date'
-
             }
         }
 
@@ -42,16 +37,18 @@ pipeline {
                             booleanParam(name: 'CONFIRM', defaultValue: true, description: 'Confirm deployment?')
                         ]
                     )
-                    echo "User entered: ${userInput}"
-        
+                    echo "User entered VERSION: ${userInput['VERSION']}"
+                    echo "User confirmed: ${userInput['CONFIRM']}"
+                }
+            }
+        }
+
         stage('Deploy') {
             steps {
-                echo 'Deploing the app'
+                echo 'Deploying the app'
                 sh 'hostname'
                 sh 'ip r'
-
             }
-
         }
-    }  
+    }
 }
