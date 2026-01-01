@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Approval') {
             steps {
                 input message: 'Do you want to continue?', ok: 'Yes, deploy'
 
