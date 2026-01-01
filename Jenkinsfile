@@ -17,6 +17,13 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                 input message: 'Do you want to continue?', ok: 'Yes, deploy'
+
+            }
+        }
+
         stage('test') {
             steps {
                 echo 'Running tests'
