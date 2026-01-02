@@ -1,9 +1,10 @@
 pipeline {
     agent any
+
     parameters {
         choice(
             name: 'Env',
-            choices: ['dev','qa','prod'],
+            choices: ['dev', 'qa', 'prod'],
             description: 'Select the environment'
         )
         booleanParam(
@@ -12,33 +13,35 @@ pipeline {
             description: 'Deploy or not'
         )
     }
+
     stages {
         stage('Build') {
             steps {
-                echo "Buildig for ${params.Env}"
-                
+                echo "Building for ${params.Env}"
             }
         }
+
         stage('Deploy') {
             when {
                 expression { params.DEPLOY == true }
             }
             steps {
-                echo "Deploying the ${params.Env}"
+                echo "Deploying to ${params.Env}"
             }
         }
-    } 
-
-}
-post {
-    success {
-        mail to: 'yesboss2112@gmail.com'
-            subject: "Build Success",
-            body: "Check Jenkins job successfully completed"
     }
-    failure {
-        mail to: 'yesboss2112@gmail.com'
-            subject: "Build Success",
-            body: "Check Jenkins job failed"
+
+    post {
+        success {
+            mail to: 'yesboss2112@gmail.com',
+                 subject: 'Build Success',
+                 body: "Jenkins job completed successfully for ${params.Env}"
+        }
+
+        failure {
+            mail to: 'yesboss2112@gmail.com',
+                 subject: 'Build Failed',
+                 body: "Jenkins job failed for ${params.Env}"
+        }
     }
 }
