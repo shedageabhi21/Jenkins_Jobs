@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy') {
             when {
-                expression { params.DEPLOY == true }
+                expression { params.DEPLOY == false }
             }
             steps {
                 echo "Deploying to ${params.Env}"
