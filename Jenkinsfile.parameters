@@ -24,7 +24,7 @@ pipeline {
                 expression { params.DEPLOY == true }
             }
             steps {
-                echo 'Deploying the ${params.Env}'
+                echo "Deploying the ${params.Env}"
             }
         }
     } 
