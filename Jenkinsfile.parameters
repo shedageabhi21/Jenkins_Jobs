@@ -33,15 +33,12 @@ pipeline {
 
     post {
         success {
-            mail to: 'yesboss2112@gmail.com',
-                 subject: 'Build Success',
-                 body: "Jenkins job completed successfully for ${params.Env}"
+            echo "Jenkins job completed successfully for ${params.Env}"
         }
 
         failure {
-            mail to: 'yesboss2112@gmail.com',
-                 subject: 'Build Failed',
-                 body: "Jenkins job failed for ${params.Env}"
+        
+            echo "Jenkins job failed for ${params.Env}"
         }
     }
 }
