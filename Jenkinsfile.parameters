@@ -30,3 +30,15 @@ pipeline {
     } 
 
 }
+post {
+    success {
+        mail to: 'yesboss2112@gmail.com'
+            subject: "Build Success",
+            body: "Check Jenkins job successfully completed"
+    }
+    failure {
+        mail to: 'yesboss2112@gmail.com'
+            subject: "Build Success",
+            body: "Check Jenkins job failed"
+    }
+}
