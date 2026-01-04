@@ -1,0 +1,12 @@
+pipline {
+    agent {
+         docker { image 'alpine'}
+    }
+    stages {
+        stage('cheking') {
+            steps {
+                sh 'echo Hello from Alpine'
+            }
+        }
+    }
+}
