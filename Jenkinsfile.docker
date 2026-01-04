@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('cheking') {
             steps {
-                sh 'echo Hello from Alpine'
+                echo 'Hello from Alpine'
             }
         }
     }
