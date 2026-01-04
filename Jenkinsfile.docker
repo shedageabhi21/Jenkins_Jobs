@@ -1,11 +1,14 @@
 pipeline {
     agent {
-         docker { image 'alpine'}
+        docker {
+            image 'alpine'
+            args '-u root'
+        }
     }
     stages {
-        stage('cheking') {
+        stage('checking') {
             steps {
-                echo 'Hello from Alpine'
+                sh 'echo Hello from Alpine'
             }
         }
     }
